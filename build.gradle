@@ -25,8 +25,9 @@ repositories {
     mavenCentral() { metadataSources { mavenPom(); ignoreGradleMetadataRedirection() } }
 }
 
-group 'com.palantir.gradle.revapi'
-version System.env.CIRCLE_TAG ?: gitVersion()
+group 'io.github.nastra.gradle.revapi'
+//version System.env.CIRCLE_TAG ?: gitVersion()
+version '1.8.0'
 
 apply plugin: 'com.palantir.external-publish'
 apply plugin: 'java-gradle-plugin'
@@ -71,23 +72,16 @@ test {
 }
 
 gradlePlugin {
-    plugins {
-        revapi {
-            id = 'com.palantir.revapi'
-            implementationClass = 'com.palantir.gradle.revapi.RevapiPlugin'
-        }
-    }
-}
-
-gradlePlugin {
-    website = 'https://github.com/palantir/gradle-revapi'
-    vcsUrl = 'https://github.com/palantir/gradle-revapi'
+    website = 'https://github.com/nastra/gradle-revapi'
+    vcsUrl = 'https://github.com/nastra/gradle-revapi'
     description = 'API/ABI backwards compatibility for Java libraries using Revapi'
-//    tags.set(['versions'])
-
     plugins {
         revapi {
+            id = 'io.github.nastra.revapi'
+            implementationClass = 'com.palantir.gradle.revapi.RevapiPlugin'
             displayName = 'API/ABI backwards compatibility for Java libraries using Revapi'
+            description = 'API/ABI backwards compatibility for Java libraries using Revapi'
+            tags.set(['versions', 'API', 'ABI'])
         }
     }
 }
@@ -97,9 +91,9 @@ tasks.named('processResources').configure {
 }
 
 tasks.publish.dependsOn tasks.publishPlugins
-publishPlugins.onlyIf {
-    versionDetails().isCleanTag
-}
+//publishPlugins.onlyIf {
+//    versionDetails().isCleanTag
+//}
 project.ext.'gradle.publish.key' = System.env["GRADLE_KEY"]
 project.ext.'gradle.publish.secret' = System.env["GRADLE_SECRET"]
 
