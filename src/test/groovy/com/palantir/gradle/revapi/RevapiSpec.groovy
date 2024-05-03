@@ -27,6 +27,7 @@ class RevapiSpec extends IntegrationSpec {
 
     def setup() {
         git = new Git(projectDir)
+        System.setProperty("ignoreDeprecations", "true")
     }
 
     def 'fails when comparing produced jar versus some random other jar'() {
@@ -730,9 +731,8 @@ class RevapiSpec extends IntegrationSpec {
                     mavenCentral()
                     gradlePluginPortal()
                 }
-            
                 dependencies {
-                    classpath 'com.palantir.baseline:gradle-baseline-java:4.1.0'
+                    classpath 'com.palantir.baseline:gradle-baseline-java:5.53.0'
                 }
             }
 

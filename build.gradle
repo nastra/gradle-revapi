@@ -16,9 +16,9 @@ buildscript {
 plugins {
     id 'com.gradle.plugin-publish' version '1.2.1'
     id 'com.palantir.baseline' version '5.53.0'
-id 'com.palantir.consistent-versions' version '2.22.0'
- id 'com.palantir.git-version' version '3.0.0'
-id 'org.inferred.processors' version '3.7.0'
+    id 'com.palantir.consistent-versions' version '2.22.0'
+    id 'com.palantir.git-version' version '3.0.0'
+    id 'org.inferred.processors' version '3.7.0'
 }
 
 repositories {
@@ -79,11 +79,11 @@ gradlePlugin {
     }
 }
 
-pluginBundle {
+gradlePlugin {
     website = 'https://github.com/palantir/gradle-revapi'
     vcsUrl = 'https://github.com/palantir/gradle-revapi'
     description = 'API/ABI backwards compatibility for Java libraries using Revapi'
-    tags = ['versions']
+//    tags.set(['versions'])
 
     plugins {
         revapi {
