@@ -4,6 +4,9 @@
 
 # gradle-revapi
 
+This is a fork of the well-known `gradle-revapi` plugin from https://github.com/palantir/gradle-revapi,
+since https://github.com/palantir/gradle-revapi isn't really maintained anymore and doesn't properly work with newer Gradle versions.
+
 _A gradle plugin which runs [Revapi](https://revapi.org) to warn you when there are breaks to your Java library's
 public API or ABI._
 
@@ -15,7 +18,7 @@ Using the plugin should be as simple as:
         // ...
 
         dependencies {
-            classpath 'com.palantir.gradle.revapi:gradle-revapi:<latest-version>'
+            classpath 'io.github.nastra.gradle.revapi:gradle-revapi:<latest-version>'
         }
     }
     ```
@@ -23,7 +26,7 @@ Using the plugin should be as simple as:
 1. And then apply the plugin to all the projects you want to ensure API compatibility:
     ```diff
     // In my Java project's build.gradle that publishes a jar
-    +apply plugin: 'com.palantir.revapi'
+    +apply plugin: 'io.github.nastra.revapi'
     ```
 
 1. Revapi will be run as part of `./gradlew check`. Alternatively, you can call `./gradlew revapi` directly.
