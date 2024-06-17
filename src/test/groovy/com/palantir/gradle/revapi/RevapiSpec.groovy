@@ -270,7 +270,7 @@ class RevapiSpec extends IntegrationSpec {
 
         buildFile << """
             plugins {
-                id 'com.palantir.git-version' version '0.12.2'
+                id 'com.palantir.git-version' version '3.1.0'
             }
 
             apply plugin: '${TestConstants.PLUGIN_NAME}'
